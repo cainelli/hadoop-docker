@@ -109,7 +109,7 @@ ENV M2_HOME /usr/local/maven
 ENV PATH ${M2_HOME}/bin:${PATH}
 
 # Downoad spark
-RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz .
+RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz
 RUN tar -xvzf spark-2.1.0-bin-hadoop2.7.tgz -C /usr/local/
 RUN cd /usr/local && ln -s ./spark-2.1.0-bin-hadoop2 spark
 ENV SPARK_HOME /usr/local/spark
