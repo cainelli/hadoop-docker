@@ -104,16 +104,20 @@ RUN rm -Rf /Python-2.7.8*; rm -Rf /setuptools*
 
 # Install maven
 RUN curl --progress-bar -L http://ftp.unicamp.br/pub/apache/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz | tar -xz -C /usr/local/
-RUN cd /usr/local && ln -s ./apache-maven-3.5.0-bin.tar.gz maven
+RUN cd /usr/local && ln -s ./apache-maven-3.5.0 maven
 ENV M2_HOME /usr/local/maven
 ENV PATH ${M2_HOME}/bin:${PATH}
 
 # Downoad spark
 RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz
 RUN tar -xvzf spark-2.1.0-bin-hadoop2.7.tgz -C /usr/local/
-RUN cd /usr/local && ln -s ./spark-2.1.0-bin-hadoop2 spark
+RUN cd /usr/local && ln -s ./spark-2.1.0-bin-hadoop2.7 spark
 ENV SPARK_HOME /usr/local/spark
+RUN rm -fv /spark-2.1.0-bin-hadoop2.7.tgz
 
+#Install Mongo Connector
+RUN git clone https://github.com/Stratio/spark-mongodb.git && pwd
+RUN cd spark-mongodb && mvn clean install
 
 CMD ["/etc/bootstrap.sh", "-d"]
 
