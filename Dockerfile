@@ -120,6 +120,10 @@ RUN rm -fv /spark-2.1.0-bin-hadoop2.7.tgz
 RUN git clone https://github.com/Stratio/spark-mongodb.git && pwd
 RUN cd spark-mongodb && mvn clean install
 
+# Fix missing package
+RUN cd /root/.m2/repository/org/slf4j/slf4j-api/1.6.0 && \
+    wget -c http://central.maven.org/maven2/org/slf4j/slf4j-api/1.6.0/slf4j-api-1.6.0.jar
+    
 CMD ["/etc/bootstrap.sh", "-d"]
 
 # Hdfs ports
