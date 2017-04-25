@@ -107,6 +107,7 @@ RUN curl --progress-bar -L http://ftp.unicamp.br/pub/apache/maven/maven-3/3.5.0/
 RUN cd /usr/local && ln -s ./apache-maven-3.5.0 maven
 ENV M2_HOME /usr/local/maven
 ENV PATH ${M2_HOME}/bin:${PATH}
+ENV MAVEN_OPTS "-Xmx512m -XX:MaxPermSize=128m"
 
 # Downoad spark
 RUN wget -c http://d3kbcqa49mib13.cloudfront.net/spark-2.1.0-bin-hadoop2.7.tgz
