@@ -7,11 +7,6 @@ _Note1: This is a fork of [sequenceiq/hadoop-docker](https://github.com/sequence
 
 _Note2: this is the master branch - for a particular Hadoop version always check the related branch_
 
-# Pulling the image
-
-```
-docker pull quay.io/cainelli/docker-hadoop
-```
 
 # Build the image
 
@@ -25,7 +20,7 @@ docker build  -t cainelli/hadoop-docker:2.7.1 .
 The image is also released as an official Docker image from Docker's automated build repository - you can always pull or refer the image when launching containers.
 
 ```
-docker pull cainelli/hadoop-docker:2.7.1
+docker pull quay.io/cainelli/docker-hadoop
 ```
 
 # Start a container
@@ -35,7 +30,13 @@ In order to use the Docker image you have just build or pulled use:
 **Make sure that SELinux is disabled on the host. If you are using boot2docker you don't need to do anything.**
 
 ```
-docker run -it cainelli/hadoop-docker:2.7.1 /etc/bootstrap.sh -bash
+docker run -it quay.io/cainelli/docker-hadoop:latest /etc/bootstrap.sh -bash
+```
+
+## Pyspark + Mongo
+
+```
+/usr/local/spark/bin/pyspark --packages com.stratio.datasource:spark-mongodb_2.11:0.12.0
 ```
 
 ## Testing
