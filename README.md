@@ -35,8 +35,16 @@ docker run -it quay.io/cainelli/docker-hadoop:latest /etc/bootstrap.sh -bash
 
 ## Pyspark + Mongo
 
+Iteractive Mode
+
 ```
 /usr/local/spark/bin/pyspark --packages com.stratio.datasource:spark-mongodb_2.11:0.12.0
+```
+
+Submit a Job
+
+```
+/usr/local/spark/bin/spark-submit --packages com.stratio.datasource:spark-mongodb_2.11:0.12.0 /home/sparkJob.py
 ```
 
 ## Testing
