@@ -1,5 +1,4 @@
 numpy
-pyspark
 virtualenv
 gensim
 bs4
