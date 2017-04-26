@@ -1,9 +1,1 @@
 numpy
-virtualenv
-gensim
-bs4
-nltk
-stop_words
-flanker
-pymongo
-dateutils
