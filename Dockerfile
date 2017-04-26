@@ -100,6 +100,8 @@ RUN tar -xvf setuptools-1.4.2.tar.gz
 RUN cd setuptools-1.4.2; python2.7 setup.py install  
 RUN curl https://bootstrap.pypa.io/get-pip.py | python2.7 -
 RUN ln -s /usr/local/bin/python2.7 /usr/local/bin/python
+ADD requirements.txt /tmp/
+RUN pip install -r /tmp/requirements.txt
 RUN rm -Rf /Python-2.7.8*; rm -Rf /setuptools*
 
 # Install maven
@@ -123,7 +125,7 @@ RUN cd spark-mongodb && mvn clean install
 # Fix missing package
 RUN cd /root/.m2/repository/org/slf4j/slf4j-api/1.6.0 && \
     wget -c http://central.maven.org/maven2/org/slf4j/slf4j-api/1.6.0/slf4j-api-1.6.0.jar
-    
+
 CMD ["/etc/bootstrap.sh", "-d"]
 
 # Hdfs ports
